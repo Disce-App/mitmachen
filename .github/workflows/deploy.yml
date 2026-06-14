@@ -12,13 +12,15 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Inject Airtable API Key
         run: |
-          sed -i "s|%%AIRTABLE_API_KEY%%|${{ secrets.AIRTABLE_API_KEY }}|g" cervus-recruiting.html
+          sed -i "s|%%AIRTABLE_API_KEY%%|${{ secrets.AIRTABLE_API_KEY }}|g" index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
