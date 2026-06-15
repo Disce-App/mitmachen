@@ -653,8 +653,7 @@ async function markCodeAssigned(recordId) {
     method: "PATCH",
     body: JSON.stringify({
       fields: {
-        status:      "assigned",
-        assigned_at: new Date().toISOString()
+        status: "assigned"
       }
     })
   });
