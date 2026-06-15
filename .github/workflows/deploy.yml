@@ -18,10 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Inject Airtable API Key
-        run: |
-          sed -i "s|%%AIRTABLE_API_KEY%%|${{ secrets.AIRTABLE_API_KEY }}|g" index.html
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
