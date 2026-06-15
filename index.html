@@ -653,7 +653,8 @@ async function markCodeAssigned(recordId) {
     method: "PATCH",
     body: JSON.stringify({
       fields: {
-        status: "assigned"
+        status:      "assigned",
+        assigned_at: new Date().toISOString()
       }
     })
   });
@@ -667,6 +668,7 @@ async function saveRaffleEntry(email, code, recordId, newsletterOptIn) {
         fields: {
           email,
           code,
+          registered_at:     new Date().toISOString(),
           newsletter_opt_in: newsletterOptIn
         }
       }]
