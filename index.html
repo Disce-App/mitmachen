@@ -667,7 +667,6 @@ async function saveRaffleEntry(email, code, recordId, newsletterOptIn) {
         fields: {
           email,
           code,
-          registered_at:    new Date().toISOString(),
           newsletter_opt_in: newsletterOptIn
         }
       }]
