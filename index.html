@@ -637,11 +637,11 @@ async function airtableFetch(path, options = {}) {
 
 async function getAvailableCode() {
   // Fetch all available codes, pick one at random
-  const params = new URLSearchParams({
-    filterByFormula: '{status}="available"',
-    fields: ["code", "group_id"],
-    maxRecords: 50
-  });
+  const params = new URLSearchParams();
+  params.append("filterByFormula", '{status}="available"');
+  params.append("fields[]", "code");
+  params.append("fields[]", "group_id");
+  params.append("maxRecords", "50");
   const data = await airtableFetch("/" + BASE_ID + "/" + TABLE_CODES + "?" + params);
   if (!data.records || data.records.length === 0) return null;
   const pick = data.records[Math.floor(Math.random() * data.records.length)];
