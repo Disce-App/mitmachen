@@ -732,6 +732,15 @@ async function handleSubmit() {
 
     // Show success
     document.getElementById("code-output").textContent = code;
+    // ── Prolific-PID an Cervus-Link anhängen ──────────────────────────────────
+    const _urlParams = new URLSearchParams(window.location.search);
+    const _prolificPid = _urlParams.get("PROLIFIC_PID");
+    const _cervusBase = "https://cervus.weltvorstellung.de";
+    const _cervusUrl = _prolificPid
+      ? `${_cervusBase}/?PROLIFIC_PID=${_prolificPid}`
+      : _cervusBase;
+    document.querySelector(".btn-study").href = _cervusUrl;
+    // ─────────────────────────────────────────────────────────────────────────
     document.getElementById("form-screen").style.display = "none";
     document.getElementById("success-screen").style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
